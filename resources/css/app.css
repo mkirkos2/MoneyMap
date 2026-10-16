@@ -1,0 +1,249 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans:
+        Instrument Sans, ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --color-finance-bg: var(--finance-bg);
+    --color-finance-surface: var(--finance-surface);
+    --color-finance-surface-muted: var(--finance-surface-muted);
+    --color-finance-input: var(--finance-input);
+    --color-finance-text: var(--finance-text);
+    --color-finance-body: var(--finance-body);
+    --color-finance-muted: var(--finance-muted);
+    --color-finance-subtle: var(--finance-subtle);
+    --color-finance-faint: var(--finance-faint);
+    --color-finance-border: var(--finance-border);
+    --color-finance-border-soft: var(--finance-border-soft);
+    --color-finance-border-strong: var(--finance-border-strong);
+    --color-finance-tint: var(--finance-tint);
+    --color-finance-hover: var(--finance-hover);
+    --color-finance-accent: var(--finance-accent);
+    --color-finance-accent-soft: var(--finance-accent-soft);
+    --color-finance-action: var(--finance-action);
+    --color-finance-action-hover: var(--finance-action-hover);
+    --color-finance-action-text: var(--finance-action-text);
+    --color-finance-positive: var(--finance-positive);
+    --color-finance-negative: var(--finance-negative);
+    --color-finance-negative-soft: var(--finance-negative-soft);
+    --color-finance-negative-border: var(--finance-negative-border);
+    --color-finance-chart-muted: var(--finance-chart-muted);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer utilities {
+    body,
+    html {
+        --font-sans:
+            'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+            'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+            'Noto Color Emoji';
+    }
+}
+
+:root {
+    color-scheme: light;
+    --background: #f4f7f5;
+    --foreground: #14231c;
+    --card: #ffffff;
+    --card-foreground: #14231c;
+    --popover: #ffffff;
+    --popover-foreground: #14231c;
+    --primary: #047857;
+    --primary-foreground: #ffffff;
+    --secondary: #e8efeb;
+    --secondary-foreground: #23362d;
+    --muted: #edf2ef;
+    --muted-foreground: #5c7065;
+    --accent: #e8f5ef;
+    --accent-foreground: #065f46;
+    --destructive: hsl(0 84.2% 60.2%);
+    --destructive-foreground: hsl(0 0% 98%);
+    --border: #dce5df;
+    --input: #d4dfd8;
+    --ring: #047857;
+    --chart-1: hsl(12 76% 61%);
+    --chart-2: hsl(173 58% 39%);
+    --chart-3: hsl(197 37% 24%);
+    --chart-4: hsl(43 74% 66%);
+    --chart-5: hsl(27 87% 67%);
+    --radius: 0.5rem;
+    --sidebar-background: #edf3ef;
+    --sidebar-foreground: #33483d;
+    --sidebar-primary: #047857;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #e1eee7;
+    --sidebar-accent-foreground: #124b37;
+    --sidebar-border: #dce5df;
+    --sidebar-ring: #047857;
+    --sidebar: #edf3ef;
+
+    --finance-bg: #f4f7f5;
+    --finance-surface: #ffffff;
+    --finance-surface-muted: #edf3ef;
+    --finance-input: #ffffff;
+    --finance-text: #14231c;
+    --finance-body: #33483d;
+    --finance-muted: #5c7065;
+    --finance-subtle: #718278;
+    --finance-faint: #8a9990;
+    --finance-border: rgba(20, 53, 37, 0.12);
+    --finance-border-soft: rgba(20, 53, 37, 0.08);
+    --finance-border-strong: rgba(20, 53, 37, 0.18);
+    --finance-tint: rgba(20, 53, 37, 0.035);
+    --finance-hover: rgba(20, 53, 37, 0.045);
+    --finance-accent: #047857;
+    --finance-accent-soft: rgba(5, 150, 105, 0.09);
+    --finance-action: #047857;
+    --finance-action-hover: #065f46;
+    --finance-action-text: #ffffff;
+    --finance-positive: #047857;
+    --finance-negative: #be123c;
+    --finance-negative-soft: rgba(190, 18, 60, 0.07);
+    --finance-negative-border: rgba(190, 18, 60, 0.2);
+    --finance-chart-muted: #7b8b82;
+}
+
+.dark {
+    color-scheme: dark;
+    --background: #0b1119;
+    --foreground: #e2e8f0;
+    --card: #111c28;
+    --card-foreground: #e2e8f0;
+    --popover: #111c28;
+    --popover-foreground: #e2e8f0;
+    --primary: #34d399;
+    --primary-foreground: #07110e;
+    --secondary: #172231;
+    --secondary-foreground: #e2e8f0;
+    --muted: #172231;
+    --muted-foreground: #94a3b8;
+    --accent: rgba(52, 211, 153, 0.1);
+    --accent-foreground: #a7f3d0;
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: hsl(0 0% 98%);
+    --border: rgba(255, 255, 255, 0.08);
+    --input: rgba(255, 255, 255, 0.12);
+    --ring: #34d399;
+    --chart-1: hsl(220 70% 50%);
+    --chart-2: hsl(160 60% 45%);
+    --chart-3: hsl(30 80% 55%);
+    --chart-4: hsl(280 65% 60%);
+    --chart-5: hsl(340 75% 55%);
+    --sidebar-background: #0e1722;
+    --sidebar-foreground: #cbd5e1;
+    --sidebar-primary: #34d399;
+    --sidebar-primary-foreground: #07110e;
+    --sidebar-accent: rgba(52, 211, 153, 0.1);
+    --sidebar-accent-foreground: #a7f3d0;
+    --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-ring: #34d399;
+    --sidebar: #0e1722;
+
+    --finance-bg: #0b1119;
+    --finance-surface: #111c28;
+    --finance-surface-muted: #0e1722;
+    --finance-input: rgba(255, 255, 255, 0.035);
+    --finance-text: #f1f5f9;
+    --finance-body: #cbd5e1;
+    --finance-muted: #94a3b8;
+    --finance-subtle: #64748b;
+    --finance-faint: #475569;
+    --finance-border: rgba(255, 255, 255, 0.08);
+    --finance-border-soft: rgba(255, 255, 255, 0.06);
+    --finance-border-strong: rgba(255, 255, 255, 0.12);
+    --finance-tint: rgba(255, 255, 255, 0.03);
+    --finance-hover: rgba(255, 255, 255, 0.05);
+    --finance-accent: #6ee7b7;
+    --finance-accent-soft: rgba(52, 211, 153, 0.08);
+    --finance-action: #6ee7b7;
+    --finance-action-hover: #a7f3d0;
+    --finance-action-text: #07110e;
+    --finance-positive: #6ee7b7;
+    --finance-negative: #fda4af;
+    --finance-negative-soft: rgba(251, 113, 133, 0.06);
+    --finance-negative-border: rgba(251, 113, 133, 0.16);
+    --finance-chart-muted: #718096;
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
